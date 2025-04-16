@@ -10,8 +10,6 @@ import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 
 
-API_KEY="sJAxc5dCiOfv1ZRlISGgfTAG3nc8mOfngVXTAJUR"
-
 # TLE (Two-Line Element set) est un format standard utilisé pour représenter les orbites des satellites artificiels.
 def search_tle_by_name(name):
     url = f"https://tle.ivanstanojevic.me/api/tle?search={name}"
