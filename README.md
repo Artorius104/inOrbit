@@ -1,6 +1,10 @@
 # 🚧 WORK IN PROGRESS
 
+# ⚽ Goal of the Project
 
+## 📑 Sources
+- [NASA APIs](https://api.nasa.gov/)
+- [TLE API](https://tle.ivanstanojevic.me/#/)
 
 # 🛠 How to Set Up the Project
 
