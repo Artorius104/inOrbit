@@ -1,9 +1,9 @@
 [project]
 name = "inorbit"
 version = "0.1.0"
-description = "Spark Streaming project"
+description = "ESGI Spark Streaming project - Satellite tracking"
 authors = [
-    {name = "Your Name",email = "you@example.com"}
+    {name = "artorius104",email = "divin.badiabo@gmail.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.12"
@@ -16,6 +16,9 @@ dependencies = [
     "datetime (>=5.5,<6.0)",
     "cartopy (>=0.24.1,<0.25.0)"
 ]
+
+[tool.poetry]
+packages = [{include = "inorbit", from = "src"}]
 
 
 [build-system]
