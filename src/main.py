@@ -61,6 +61,29 @@ def tle_search(name):
 # 15.50123467890123 : Moyenne du mouvement (mean motion) en révolutions par jour
 # 505441 :  Numéro de révolution depuis le lancement (approximatif)	
 
+# Helper to compute geodetic coordinates from ECI
+def eci_to_latlon(x, y, z):
+    R = sqrt(x**2 + y**2 + z**2)
+    lat = degrees(asin(z / R))
+    lon = degrees(atan2(y, x))
+    alt = R - 6371.0  # Approx Earth radius in km
+    return lat, lon, alt
+
+# Plot with Cartopy
+def plot_trajectory(df):
+    plt.figure(figsize=(12, 6))
+    ax = plt.axes(projection=ccrs.PlateCarree())
+    ax.set_global()
+    ax.stock_img()
+    ax.coastlines()
+    ax.add_feature(cfeature.BORDERS, linestyle=':')
+    ax.gridlines(draw_labels=True)
+
+    # Plot the trajectory
+    ax.plot(df["longitude"], df["latitude"], 'r-', marker='o', transform=ccrs.Geodetic())
+    plt.title("Trajectoire de l'ISS (ZARYA) sur 90 minutes")
+    plt.show()
+
 
 if __name__ == "__main__":
     satellite_name = "ISS"
@@ -78,14 +101,6 @@ if __name__ == "__main__":
     # Generate timestamps for 90 minutes at 1-minute intervals
     epoch_dt = sat_epoch_datetime(sat)
     timestamps = [epoch_dt + timedelta(minutes=i) for i in range(0, 91, 1)]
-
-    # Helper to compute geodetic coordinates from ECI
-    def eci_to_latlon(x, y, z):
-        R = sqrt(x**2 + y**2 + z**2)
-        lat = degrees(asin(z / R))
-        lon = degrees(atan2(y, x))
-        alt = R - 6371.0  # Approx Earth radius in km
-        return lat, lon, alt
 
     # Propagate and collect coordinates
     data = []
@@ -107,17 +122,6 @@ if __name__ == "__main__":
     # Save to CSV
     csv_path = "data/iss_trajectory_cartopy.csv"
     df.to_csv(csv_path, index=False)
+    plot_trajectory(df)
 
-    # Plot with Cartopy
-    plt.figure(figsize=(12, 6))
-    ax = plt.axes(projection=ccrs.PlateCarree())
-    ax.set_global()
-    ax.stock_img()
-    ax.coastlines()
-    ax.add_feature(cfeature.BORDERS, linestyle=':')
-    ax.gridlines(draw_labels=True)
 
-    # Plot the trajectory
-    ax.plot(df["longitude"], df["latitude"], 'r-', marker='o', transform=ccrs.Geodetic())
-    plt.title("Trajectoire de l'ISS (ZARYA) sur 90 minutes")
-    plt.show()
