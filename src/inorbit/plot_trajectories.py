@@ -10,8 +10,6 @@ import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 
 
-
-
 # Helper to compute geodetic coordinates from ECI
 def eci_to_latlon(x, y, z):
     R = sqrt(x**2 + y**2 + z**2)
@@ -36,15 +34,10 @@ def plot_trajectory(df):
     plt.show()
 
 
-if __name__ == "__main__":
-    satellite_name = "ISS"
-
+def main():
     # TLE lines for ISS (ZARYA)
     line1 = "1 25544U 98067A   25105.53237150  .00014782  00000+0  27047-3 0  9993"
     line2 = "2 25544  51.6375 257.3560 0005276  47.8113  31.7820 15.49569282505441"
-
-    # Search for TLE data
-    test_tle_search()
 
     # Load satellite
     sat = Satrec.twoline2rv(line1, line2)

@@ -19,6 +19,7 @@ dependencies = [
 
 [project.scripts]
 test-tle = "inorbit.test_tle:main"
+plot-trajectories = "inorbit.plot_trajectories:main"
 
 [tool.poetry]
 packages = [{include = "inorbit", from = "src"}]
