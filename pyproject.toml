@@ -17,6 +17,9 @@ dependencies = [
     "cartopy (>=0.24.1,<0.25.0)"
 ]
 
+[project.scripts]
+test-tle = "inorbit.test_tle:main"
+
 [tool.poetry]
 packages = [{include = "inorbit", from = "src"}]
 
