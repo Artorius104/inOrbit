@@ -34,6 +34,8 @@ Alternatively, run a specific Python file directly:
 poetry run python src/inorbit/test_tle.py
 ```
 
+# 🛠 How to Contribute
+
 ## 🧱 How to Create a New Script
 
 Create your new script, for example:
