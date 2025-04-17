@@ -1,8 +1,8 @@
 # 🚧 WORK IN PROGRESS
 
-## 🛠 How to Set Up the Project
+# 🛠 How to Set Up the Project
 
-### 📦 Dependency Management
+## 📦 Dependency Management
 
 This project uses [Poetry](https://python-poetry.org/) to manage dependencies and environments.
 
@@ -10,7 +10,7 @@ Useful links:
 - [Poetry Basic Usage](https://python-poetry.org/docs/basic-usage/)
 - [Poetry CLI Reference](https://python-poetry.org/docs/cli/)
 
-### 🧪 Installation
+## 🧪 Installation
 
 Run this command **once**, or **whenever you change `pyproject.toml`**:
 ```bash
