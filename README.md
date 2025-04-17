@@ -42,6 +42,7 @@ touch src/inorbit/my_new_script.py
 ```
 
 Then add the script to the pyproject.toml :
-```bash
+```python
+[project.scripts]
 my_new_script = "inorbit.my_new_script:main"
 ```
